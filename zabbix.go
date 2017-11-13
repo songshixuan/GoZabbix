@@ -285,22 +285,25 @@ func RegistryHosts(names []string,host string ,port int){
 		rz.RegistryWithGivenSock(c,rpacket)
 	}
 }
+
+
 /*
 func main() {
-
-	var rmetric = &RMetric{"SpiderMan","NB_sysquery",0}
-	rpacket := NewRPacket(rmetric)
-	rz := NewSender(defaultHost, defaultPort)
-	rz.Registy(rpacket)
-
-	beginner := "FakeHost"
+	//var rmetric = &GoZabbix.RMetric{"SpiderMan","NB_sysquery",0}
+	//rpacket := GoZabbix.NewRPacket(rmetric)
+	//rz := GoZabbix.NewSender(defaultHost, defaultPort)
+	//rz.Registy(rpacket)
+	beginner := "Host"
 	order := 1
-	for i := 0; i < 100; i++{
+
+	for i := 0; i < 10; i++{
 		tmp := beginner + strconv.Itoa(order)
 		order++
-		RegistryHost(tmp)
+		GoZabbix.RegistryHost(tmp,defaultHost,defaultPort)
 		//time.Sleep(time.Second)
 	}
 
+
+
 }
-*/
+ */
