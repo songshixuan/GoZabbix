@@ -261,11 +261,11 @@ const (
 	defaultPort  = 10051
 )
 
-func RegistryHost(name string){
+func RegistryHost(name string,host string, port int ){
 	meta := name + "_sysquery"
 	var rmetric = &RMetric{name,meta,0}
 	rpacket := NewRPacket(rmetric)
-	rz := NewSender(defaultHost, defaultPort)
+	rz := NewSender(host, port)
 	rz.Registy(rpacket)
 	fmt.Println("registry",name)
 }
