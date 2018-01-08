@@ -183,11 +183,11 @@ func (s *Sender) Send(packet *Packet) (res []byte, err error) {
 	defer conn.Close()
 
 	dataPacket, _ := json.Marshal(packet)
-
+/*
 	fmt.Printf("HEADER: % x (%s)\n", s.getHeader(), s.getHeader())
 	fmt.Printf("DATALEN: % x, %d byte\n", packet.DataLen(), len(packet.DataLen()))
 	fmt.Printf("BODY: %s\n", string(dataPacket))
-
+*/
 	// Fill buffer
 	buffer := append(s.getHeader(), packet.DataLen()...)
 	buffer = append(buffer, dataPacket...)
@@ -201,7 +201,7 @@ func (s *Sender) Send(packet *Packet) (res []byte, err error) {
 
 	res, err = s.read(conn)
 
-	fmt.Printf("RESPONSE: %s\n", string(res))
+//	fmt.Printf("RESPONSE: %s\n", string(res))
 
 	return
 }
@@ -232,7 +232,12 @@ func (s *Sender) Registy(packet *RPacket) (res []byte, err error) {
 
 	res, err = s.read(conn)
 
-	fmt.Printf("RESPONSE: %s\n", string(res))
+	if err == nil{
+	//	fmt.Printf("RESPONSE: %s\n", string(res))
+	}else{
+	//	fmt.Println(err)
+	}
+
 
 	return
 }
@@ -251,7 +256,7 @@ func (s *Sender) RegistryWithGivenSock(conn *net.TCPConn, packet *RPacket) (res 
 	}
 
 	res, err = s.read(conn)
-	fmt.Println("response",string(res))
+//	fmt.Println("response",string(res))
 	return
 }
 
@@ -267,7 +272,7 @@ func RegistryHost(name string,host string, port int ){
 	rpacket := NewRPacket(rmetric)
 	rz := NewSender(host, port)
 	rz.Registy(rpacket)
-	fmt.Println("registry",name)
+//	fmt.Println("registry",name)
 }
 
 
